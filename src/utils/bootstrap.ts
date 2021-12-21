@@ -1,6 +1,6 @@
 interface SetupPayload {
-  onProduction: () => void
-  onDevelopment: () => void
+  onProduction: () => void;
+  onDevelopment: () => void;
 }
 
 export function setup ({ onProduction, onDevelopment }: SetupPayload) {
