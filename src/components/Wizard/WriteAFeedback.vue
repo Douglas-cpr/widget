@@ -28,10 +28,8 @@ import { defineComponent, ComputedRef, reactive, computed } from 'vue'
 import useStore from '@/hooks/store'
 import useNavigation from '@/hooks/navigation'
 import Icon from '@/components/Icon/index.vue'
-// import { setMessage } from '@/store'
-// import services from '@/services'
-const services = {
-}
+import { setMessage } from '@/store'
+import services from '@/services'
 
 type State = {
   feedback: string;
@@ -41,7 +39,7 @@ type State = {
 
 interface SetupReturn {
   state: State;
-  // submitAFeedback(): Promise<void>;
+  submitAFeedback(): Promise<void>;
   submitButtonIsDisabled: ComputedRef<boolean>;
 }
 
@@ -66,32 +64,32 @@ export default defineComponent({
       setErrorState()
     }
 
-    // async function submitAFeedback (): Promise<void> {
-    //  setMessage(state.feedback)
-    //  state.isLoading = true
-    //   try {
-    //     const reponse = await services.feedbacks.create({
-    //       type: store.feedbackType,
-    //       text: store.message,
-    //       page: store.currentPage,
-    //       apiKey: store.apiKey,
-    //       device: window.navigator.userAgent,
-    //       fingerprint: store.fingerprint
-    //     })
+    async function submitAFeedback (): Promise<void> {
+      setMessage(state.feedback)
+      state.isLoading = true
+      try {
+        const reponse = await services.feedbacks.create({
+          type: store.feedbackType,
+          text: store.message,
+          page: store.currentPage,
+          apiKey: store.apiKey,
+          device: window.navigator.userAgent,
+          fingerprint: store.fingerprint
+        })
 
-    //     if (reponse.errors) {
-    //       setErrorState()
-    //     } else {
-    //       setSuccessState()
-    //     }
-    //   } catch (error: any) {
-    //     handleError(error)
-    //   }
-    // }
+        if (reponse.errors) {
+          setErrorState()
+        } else {
+          setSuccessState()
+        }
+      } catch (error: any) {
+        handleError(error)
+      }
+    }
 
     return {
       state,
-      // submitAFeedback,
+      submitAFeedback,
       submitButtonIsDisabled
     }
   }
