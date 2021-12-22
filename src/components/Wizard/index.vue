@@ -14,6 +14,7 @@ import { setFeedbackType, StoreState } from '@/store'
 import { defineComponent } from 'vue'
 import SelectFeedbackType from './SelectFeedbackType.vue'
 import WriteAFeedback from './WriteAFeedback.vue'
+import Success from './Success.vue'
 
 interface SetupReturn {
   store: StoreState;
@@ -23,7 +24,7 @@ interface SetupReturn {
 }
 
 export default defineComponent({
-  components: { SelectFeedbackType, WriteAFeedback },
+  components: { SelectFeedbackType, WriteAFeedback, Success },
   setup (): SetupReturn {
     const store = useStore()
     const { next } = useNavigation()

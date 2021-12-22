@@ -68,7 +68,7 @@ export default defineComponent({
 
     // async function submitAFeedback (): Promise<void> {
     //  setMessage(state.feedback)
-    //  state.isLoading = true  
+    //  state.isLoading = true
     //   try {
     //     const reponse = await services.feedbacks.create({
     //       type: store.feedbackType,
