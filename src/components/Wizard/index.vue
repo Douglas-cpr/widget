@@ -12,6 +12,8 @@ import useNavigation, { Navigation } from '@/hooks/navigation'
 import useStore from '@/hooks/store'
 import { setFeedbackType, StoreState } from '@/store'
 import { defineComponent } from 'vue'
+import SelectFeedbackType from './SelectFeedbackType.vue'
+import WriteAFeedback from './WriteAFeedback.vue'
 
 interface SetupReturn {
   store: StoreState;
@@ -21,6 +23,7 @@ interface SetupReturn {
 }
 
 export default defineComponent({
+  components: { SelectFeedbackType, WriteAFeedback },
   setup (): SetupReturn {
     const store = useStore()
     const { next } = useNavigation()

@@ -14,7 +14,7 @@ export default function useNavigation (): Navigation {
 
   function next (): void {
     if (store.currentComponent === 'SelectFeedbackType') {
-      setCurrentComponent('WriteAFeedBack')
+      setCurrentComponent('WriteAFeedback')
     }
   }
 
